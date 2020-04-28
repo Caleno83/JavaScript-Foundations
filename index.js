@@ -67,7 +67,7 @@ function mortgageCalculator() {
     return (`${name} , your monthly rate is ${monthlyRate}`);
     }
     
-    mortgageCalculator();// Jorge, your monthly rate us 1073.6432
+    mortgageCalculator();// Jorge, your monthly rate is 1073.6432
 
 
 
@@ -110,8 +110,8 @@ Then, add control flow within your function such that IF creditScore is above 74
 */
 function mortgageCalculator(p, i, n, c) {
 
-    let interestRate = i;
     let principal = p;
+    let interestRate = i;
     let years = n;
     let creditScore = c;
     
@@ -154,7 +154,43 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.055, your monthly rate is $1136"
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
+function variableInterestRate (p, i, n, b) {
 
+    let interestRate = i;
+    let principal = p;
+    let years = n;
+    /* I dont know if leave this with a variable or not*/
+    var i = 0.015;
+    for (let b = i; b < 9; b++) {
+     i +=0.005;
+    
+      
+    let monthlyInterestRate = i / 12;
+    let periods = n * 12;
+    let numerator =  monthlyInterestRate*(Math.pow((1 + monthlyInterestRate), periods));
+    
+    let denominator = Math.pow((1 + monthlyInterestRate), periods) -1;
+    
+    let monthlyRate = p * (numerator/denominator);
+    
+    
+    console.log(`${name}, with an interest of ${i.toFixed(3)}, your monthly rate is $${Math.round(monthlyRate)}`);
+    
+    }
+    } 
+    
+    variableInterestRate(200000, 0.02, 30);
+    
+    
+    /*Jorge, with an interest of 0.020, your monthly rate is $739
+    Jorge, with an interest of 0.025, your monthly rate is $790
+    Jorge, with an interest of 0.030, your monthly rate is $843
+    Jorge, with an interest of 0.035, your monthly rate is $898
+    Jorge, with an interest of 0.040, your monthly rate is $955
+    Jorge, with an interest of 0.045, your monthly rate is $1013
+    Jorge, with an interest of 0.050, your monthly rate is $1074
+    Jorge, with an interest of 0.055, your monthly rate is $1136
+    Jorge, with an interest of 0.060, your monthly rate is $1199*/
 
 
 
