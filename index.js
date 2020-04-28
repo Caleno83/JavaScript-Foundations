@@ -52,9 +52,13 @@ console.log(monthlyRate);  //1073.6432.
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
 function mortgageCalculator() {
+    
+    let principal = 200000;
+    let interestRate = 0.05;
+    let years = 30;
 
     let monthlyInterestRate = interestRate / 12;
-     let periods = years * 12;
+    let periods = years * 12;
     let numerator =  monthlyInterestRate*(Math.pow((1 + monthlyInterestRate), periods));
     
     let denominator = Math.pow((1 + monthlyInterestRate), periods) -1;
@@ -104,7 +108,34 @@ function mortgageCalculator(p, i, n) {
 
 Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 */
+function mortgageCalculator(p, i, n, c) {
 
+    let interestRate = i;
+    let principal = p;
+    let years = n;
+    let creditScore = c;
+    
+    
+    let numerator =  monthlyInterestRate*(Math.pow((1 + monthlyInterestRate), periods));
+    
+    let denominator = Math.pow((1 + monthlyInterestRate), periods) -1;
+    
+    let monthlyRate = p * (numerator/denominator);
+    if ( c > 740) {
+     var c = (i - (i* 0.005));
+    }
+    else if ( c < 660) {
+      var c  = (i + (i* 0.005));
+    }
+    else  {
+       var c = i;
+    } 
+    
+    return c;
+    }
+    
+    console.log(mortgageCalculator(200000, 0.05,30, 800));// 0.04975
+    
 
 
 
